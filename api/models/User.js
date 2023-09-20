@@ -43,11 +43,7 @@ User.init({
   },
   is_admin: {
     type: DataTypes.BOOLEAN,
-    allowNull: false,
-  },
-  role: {
-    type: DataTypes.ENUM,
-    values: ["ADMIN", "USER"],
+    defaultValue: false,
   },
   sequelize,
   modelName: "User",
