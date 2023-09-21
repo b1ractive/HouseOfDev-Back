@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const SECRET = "bokita";
 
 function generateToken(payload) {
   const token = jwt.sign({ payload }, SECRET, {
