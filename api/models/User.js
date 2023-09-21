@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/db"); // chequear despues del merge como se llama el archivo
+const db = require("../config/db"); // chequear despues del merge como se llama el archivo
 const bcrypt = require("bcrypt");
 
 class User extends Model {
@@ -14,40 +14,44 @@ class User extends Model {
   }
 }
 
-User.init({
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  last_name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    validate: {
-      isEmail: true,
+User.init(
+  {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    last_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isEmail: true,
+      },
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    salt: {
+      type: DataTypes.STRING,
+    },
+    telephone: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    is_admin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  salt: {
-    type: DataTypes.STRING,
-  },
-  telephone: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  is_admin: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  },
-  sequelize,
-  modelName: "User",
-});
+  {
+    sequelize: db,
+    modelName: "User",
+  }
+);
 
 User.beforeCreate((user) => {
   const salt = bcrypt.genSaltSync(8);
