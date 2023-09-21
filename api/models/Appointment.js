@@ -5,11 +5,7 @@ class Appointment extends Model {}
 
 Appointment.init(
   {
-   location: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    schedule: {
+  schedule: {
       type: DataTypes.STRING,
       allowNull: false,
     },
