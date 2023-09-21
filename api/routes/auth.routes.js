@@ -4,20 +4,18 @@ const User = require("../models/User");
 const { generateToken } = require("../config/tokens");
 const { validateUser } = require("../middelwares/auth");
 
-
 router.post("/register", (req, res) => {
-  const { name, last_name, email, password, telephone } = req.body;  
+  const { name, last_name, email, password, telephone } = req.body;
 
   User.findOne({ where: { email } })
     .then((userExists) => {
       if (userExists) {
-        
         return res
           .status(400)
           .json({ error: "El correo electrónico ya está en uso" });
       }
 
-      return User.create({        
+      return User.create({
         name,
         last_name,
         email,
@@ -33,7 +31,6 @@ router.post("/register", (req, res) => {
       res.status(500).json({ error: "Error al registrar el usuario" });
     });
 });
-
 
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
@@ -54,6 +51,7 @@ router.post("/login", (req, res) => {
         } else {
           const payload = {
             userId: user.id,
+            name: user.name,
             last_name: user.last_name,
             email: user.email,
             telephone: user.telephone,
@@ -70,10 +68,9 @@ router.post("/login", (req, res) => {
     });
 });
 
-
 router.post("/logout", (req, res) => {
   res.clearCookie("token");
-  res.status(200).json({ message: "Sesión cerrada con éxito" });
+  res.sendStatus(204).end();
 });
 
 // ruta /me
