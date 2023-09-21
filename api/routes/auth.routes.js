@@ -4,22 +4,20 @@ const User = require("../models/User");
 const { generateToken } = require("../config/tokens");
 const { validateUser } = require("../middelwares/auth");
 
-// ruta de registro
+
 router.post("/register", (req, res) => {
-  const { name, last_name, email, password, telephone } = req.body;
-  console.log(req.body);
+  const { name, last_name, email, password, telephone } = req.body;  
 
   User.findOne({ where: { email } })
     .then((userExists) => {
       if (userExists) {
-        // si el usuario existe tira mensaje de error que el mail ya esta en uso
+        
         return res
           .status(400)
           .json({ error: "El correo electrónico ya está en uso" });
       }
 
-      return User.create({
-        // y sino me crea un nuevo usuario
+      return User.create({        
         name,
         last_name,
         email,
@@ -36,7 +34,7 @@ router.post("/register", (req, res) => {
     });
 });
 
-// ruta de login
+
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
 
@@ -72,7 +70,6 @@ router.post("/login", (req, res) => {
     });
 });
 
-// ruta de logout
 
 router.post("/logout", (req, res) => {
   res.clearCookie("token");
