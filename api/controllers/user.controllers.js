@@ -1,25 +1,23 @@
 const { User } = require("../models");
-const { validateUser } = require("../middelwares/auth");
 
 const getUsers = (req, res) => {
   User.findAll()
-    .then((res) => res.json())
+    .then((users) => res.json(users))
     .catch(() => res.json({ error: "No users found" }));
 };
 
 const getUser = (req, res) => {
   const { userId } = req.params;
   User.findByPk(userId)
-    .then((res) => res.json())
+    .then((user) => res.json(user))
     .catch(() => res.status(404).json({ error: "User not found" }));
 };
 
-const editUser =
-  (validateUser,
-  (req, res) => {
-    const { userId } = req.params;
+const editUser = (req, res) => {
+  const { userId } = req.params;
 
-    User.update(req.body, { where: { userId } }).then((result) => {
+  User.update(req.body, { where: { userId }, returning: true })
+    .then((result) => {
       const [user] = result;
 
       if (!user[0]) {
@@ -29,12 +27,15 @@ const editUser =
       }
 
       res.status(200).json(user[0]);
-    });
-  });
+    })
+    .catch(() => res.status(500).json({ error: "Error from system" }));
+};
 
 const deleteUser = (req, res) => {
   const { userId } = req.params;
-  Pages.destroy({ where: { userId } }).then(() => res.json("User deleted"));
+  User.destroy({ where: { userId } })
+    .then(() => res.json("User deleted"))
+    .catch(() => res.status(404).json({ error: "Can't deleted user" }));
 };
 
 module.exports = { getUsers, getUser, editUser, deleteUser };
