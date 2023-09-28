@@ -17,6 +17,7 @@ Property.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+
     tipe: {
       type: DataTypes.STRING,
       allowNull: false,
