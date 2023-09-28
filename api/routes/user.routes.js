@@ -7,6 +7,7 @@ const {
   getUser,
   editUser,
   deleteUser,
+  getUserProfile,
 } = require("../controllers/user.controllers");
 
 router.get("/", getUsers);
