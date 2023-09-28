@@ -6,7 +6,7 @@ class Property extends Model {}
 Property.init(
   {
     location: {
-      type:DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     price: {
@@ -17,7 +17,7 @@ Property.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    tipe: {
+    name: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -33,7 +33,7 @@ Property.init(
     category: {
       type: DataTypes.STRING,
     },
-    },
+  },
   { sequelize: db, modelName: "Property" }
 );
 
