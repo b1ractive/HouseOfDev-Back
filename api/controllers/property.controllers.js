@@ -10,19 +10,11 @@ const getProperties = async (req, res) => {
 };
 
 const getProperty = (req, res) => {
-  const { id } = req.params;
+  const { propertyId } = req.params;
 
-  Property.findOne({ where: { id } })
-    .then((property) => {
-      if (!property) {
-        res.status(404).json({ error: "Property not found" });
-      } else {
-        res.json(property);
-      }
-    })
-    .catch(() => {
-      res.status(500).json({ error: "Internal server error" });
-    });
+  Property.findByPk(propertyId)
+    .then((property) => res.json(property))
+    .catch(() => res.status(404).json({ error: "Property not found" }));
 };
 
 const editProperty = () => {};
