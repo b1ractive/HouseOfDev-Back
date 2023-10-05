@@ -13,7 +13,7 @@ router.get("/", getUsers);
 
 router.get("/:userId", getUser);
 
-router.put("/:userId", validateUser, editUser);
+router.put("/:userId", editUser);
 
 router.delete("/:userId", deleteUser);
 

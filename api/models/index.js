@@ -7,10 +7,14 @@ const Property = require("./Property");
 Users.belongsToMany(Property, { through: Rating });
 Property.belongsToMany(Users, { through: Rating });
 
-Users.hasMany(Appointment);
+Users.belongsToMany(Property, {
+  through: Appointment,
+});
+Property.belongsToMany(Users, {
+  through: Appointment,
+});
 
-Appointment.belongsToMany(Property, { through: "reservation" });
-Property.belongsToMany(Appointment, { through: "reservation" });
+//Probar estas relaciones si funcionan o no
 
 module.exports = {
   Users,

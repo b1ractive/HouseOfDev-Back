@@ -5,20 +5,25 @@ class Appointment extends Model {}
 
 Appointment.init(
   {
-  schedule: {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    date: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    time_init: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    time_finish: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    },
-  { sequelize: db, modelName: "Appointment" }
+    // userId: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    // },
+    // propertyId: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    // },
+  },
+  { sequelize: db, modelName: "appointments" }
 );
 
 module.exports = Appointment;
