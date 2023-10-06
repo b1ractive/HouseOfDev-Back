@@ -50,11 +50,12 @@ router.post("/login", (req, res) => {
           return res.status(401).json({ error: "Contraseña incorrecta" });
         } else {
           const payload = {
-            userId: user.id,
+            id: user.id,
             name: user.name,
             last_name: user.last_name,
             email: user.email,
             telephone: user.telephone,
+            is_admin: user.is_admin,
           };
           const token = generateToken(payload);
           res.cookie("token", token);

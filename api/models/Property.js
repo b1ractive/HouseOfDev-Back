@@ -18,7 +18,7 @@ Property.init(
       allowNull: false,
     },
 
-    tipe: {
+    tipe: {  // seria el nombre
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -32,7 +32,7 @@ Property.init(
       allowNull: false,
     },
     category: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING,  // venta o alquiler
     },
   },
   { sequelize: db, modelName: "properties" }

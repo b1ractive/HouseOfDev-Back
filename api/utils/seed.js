@@ -52,7 +52,7 @@ const { Users, Appointment, Property, Rating } = require("../models");
       availability: true,
       image:
         "https://imgar.zonapropcdn.com/avisos/resize/1/00/52/02/04/57/1200x1200/1874215699.jpg",
-      category: "En Venta",
+      category: "venta",
       createdAt: "2023-09-28 12:00:00",
       updatedAt: "2023-09-28 12:00:00",
     },
@@ -64,7 +64,7 @@ const { Users, Appointment, Property, Rating } = require("../models");
       availability: true,
       image:
         "https://imgar.zonapropcdn.com/avisos/1/00/52/07/23/64/1200x1200/1875484014.jpg",
-      category: "En Venta",
+      category: "venta",
       createdAt: "2023-09-28 12:00:00",
       updatedAt: "2023-09-28 12:00:00",
     },
@@ -76,7 +76,7 @@ const { Users, Appointment, Property, Rating } = require("../models");
       availability: true,
       image:
         "https://imgar.zonapropcdn.com/avisos/resize/1/00/51/58/12/97/1200x1200/1864628768.jpg",
-      category: "En Venta",
+      category: "venta",
       createdAt: "2023-09-28 12:00:00",
       updatedAt: "2023-09-28 12:00:00",
     },
@@ -88,7 +88,7 @@ const { Users, Appointment, Property, Rating } = require("../models");
       availability: true,
       image:
         "https://imgar.zonapropcdn.com/avisos/resize/1/00/51/76/21/33/1200x1200/1870123194.jpg",
-      category: "En Venta",
+      category: "venta",
       createdAt: "2023-09-28 12:00:00",
       updatedAt: "2023-09-28 12:00:00",
     },
@@ -100,7 +100,7 @@ const { Users, Appointment, Property, Rating } = require("../models");
       availability: true,
       image:
         "https://imgar.zonapropcdn.com/avisos/1/00/50/54/82/19/1200x1200/1868559457.jpg",
-      category: "En Venta",
+      category: "venta",
       createdAt: "2023-09-28 12:00:00",
       updatedAt: "2023-09-28 12:00:00",
     },
@@ -112,7 +112,7 @@ const { Users, Appointment, Property, Rating } = require("../models");
       availability: true,
       image:
         "https://imgar.zonapropcdn.com/avisos/1/00/52/33/65/40/1200x1200/1881422769.jpg",
-      category: "En Alquiler",
+      category: "alquiler",
       createdAt: "2023-09-28 12:00:00",
       updatedAt: "2023-09-28 12:00:00",
     },
@@ -124,7 +124,7 @@ const { Users, Appointment, Property, Rating } = require("../models");
       availability: true,
       image:
         "https://imgar.zonapropcdn.com/avisos/1/00/51/53/47/64/1200x1200/1863422316.jpg",
-      category: "En Alquiler",
+      category: "alquiler",
       createdAt: "2023-09-28 12:00:00",
       updatedAt: "2023-09-28 12:00:00",
     },
@@ -136,7 +136,7 @@ const { Users, Appointment, Property, Rating } = require("../models");
       availability: true,
       image:
         "https://imgar.zonapropcdn.com/avisos/1/00/51/93/84/82/1200x1200/1872314051.jpg",
-      category: "En Alquiler",
+      category: "alquiler",
       createdAt: "2023-09-28 12:00:00",
       updatedAt: "2023-09-28 12:00:00",
     },
@@ -148,7 +148,7 @@ const { Users, Appointment, Property, Rating } = require("../models");
       availability: true,
       image:
         "https://imgar.zonapropcdn.com/avisos/1/00/52/31/69/91/1200x1200/1881015756.jpg",
-      category: "En Alquiler",
+      category: "alquiler",
       createdAt: "2023-09-28 12:00:00",
       updatedAt: "2023-09-28 12:00:00",
     },
@@ -160,7 +160,7 @@ const { Users, Appointment, Property, Rating } = require("../models");
       availability: true,
       image:
         "https://imgar.zonapropcdn.com/avisos/1/00/52/09/80/70/1200x1200/1876045409.jpg",
-      category: "En Alquiler",
+      category: "alquiler",
       createdAt: "2023-09-28 12:00:00",
       updatedAt: "2023-09-28 12:00:00",
     },
