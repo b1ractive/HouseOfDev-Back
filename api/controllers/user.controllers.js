@@ -16,19 +16,22 @@ const getUser = (req, res) => {
 const editUser = (req, res) => {
   const { userId } = req.params;
 
-  User.update(req.body, { where: { userId }, returning: true })
+  User.update(req.body, { where: { id: userId }, returning: true })
     .then((result) => {
-      const [user] = result;
+      const [row, user] = result;
 
-      if (!user[0]) {
+      if (!user) {
         return res
           .status(404)
           .json({ message: "The user was not found with that id" });
       }
 
-      res.status(200).json(user[0]);
+      res.status(200).json(user[0].dataValues);
     })
-    .catch(() => res.status(500).json({ error: "Error from system" }));
+    .catch((error) => {
+      console.error("Error updating user:", error);
+      res.status(500).json({ error: "Failed to update user" });
+    });
 };
 
 const deleteUser = (req, res) => {

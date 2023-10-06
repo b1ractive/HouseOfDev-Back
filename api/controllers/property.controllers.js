@@ -25,8 +25,29 @@ const getProperty = (req, res) => {
     });
 };
 
+const filterProperties = async (req, res) => {
+  try {
+    const { category } = req.params; // Obtén la categoría desde la consulta en la URL
+
+    if (category !== "venta" && category !== "alquiler") {
+      return res.status(401).json({
+        error: 'El parámetro "category" debe ser "venta" o "alquiler".',
+      });
+    }
+
+    const propiedades = await Property.findAll({
+      where: { category },
+    });
+
+    return res.json(propiedades);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Error en el servidor" });
+  }
+};
+
 const editProperty = () => {};
 
 const deleteProperty = () => {};
 
-module.exports = { getProperty, getProperties };
+module.exports = { getProperty, getProperties, filterProperties };
