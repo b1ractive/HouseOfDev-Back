@@ -28,7 +28,8 @@ const addReserve = async (req, res) => {
       from: `House Of Dev <HouseOfDev@gmail.com>`,
       to: "kevin.jn99@gmail.com", // Cambia esto al correo del usuario real
       subject: "Confirmación de Reserva",
-      text: `Tu reserva para el ${date} ha sido confirmada.`,
+      html: `Tu reserva para el ${date} ha sido confirmada.
+      <button><a href="http://localhost:5173">INGRESAR A HOUSEOFDEV</a></button>`,
     };
 
     transporter.sendMail(correoReserva, (error, info) => {

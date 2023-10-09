@@ -1,11 +1,11 @@
 // Aca van la relaciones
 const Users = require("./User");
-const Rating = require("./Rating");
+const Favorite = require("./Favorite");
 const Appointment = require("./Appointment");
 const Property = require("./Property");
 
-Users.belongsToMany(Property, { through: Rating });
-Property.belongsToMany(Users, { through: Rating });
+Users.belongsToMany(Property, { through: Favorite });
+Property.belongsToMany(Users, { through: Favorite });
 
 Users.belongsToMany(Property, {
   through: Appointment,
@@ -18,7 +18,7 @@ Property.belongsToMany(Users, {
 
 module.exports = {
   Users,
-  Rating,
+  Favorite,
   Property,
   Appointment,
 };
