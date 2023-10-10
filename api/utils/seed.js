@@ -41,6 +41,16 @@ const { Users, Appointment, Property, Rating } = require("../models");
       createdAt: "2023-09-21 12:00:00",
       updatedAt: "2023-09-21 12:00:00",
     },
+    {
+      name: "Administrador",
+      last_name: "Admin",
+      email: "admin@example.com",
+      ...generateHashedPassword("12345678"),
+      telephone: "1134567890",
+      is_admin: true,
+      createdAt: "2023-09-21 14:00:00",
+      updatedAt: "2023-09-21 14:00:00",
+    },
   ];
 
   const propertyData = [
