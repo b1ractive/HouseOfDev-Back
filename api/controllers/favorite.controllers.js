@@ -32,6 +32,19 @@ const addFavorite = async (req, res) => {
       return res.status(404).json({ mensaje: "Usuario no encontrado" });
     }
 
+    const existingFavorite = await Favorite.findOne({
+      where: {
+        userId: userId,
+        propertyId: propertyId,
+      },
+    });
+
+    if (existingFavorite) {
+      return res
+        .status(400)
+        .json({ mensaje: "La propiedad ya está en favoritos" });
+    }
+
     // Crea una nueva instancia del modelo Favorite
     const nuevoFavorito = await Favorite.create({
       userId: userId,

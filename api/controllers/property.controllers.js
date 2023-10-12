@@ -1,4 +1,5 @@
 const Property = require("../models/Property");
+const { Op } = require("sequelize");
 
 const getProperties = async (req, res) => {
   try {
@@ -38,8 +39,55 @@ const filterProperties = async (req, res) => {
   }
 };
 
-const editProperty = () => {};
+const search = async (req, res) => {
+  try {
+    const { query } = req.params;
 
-const deleteProperty = () => {};
+    const propertiesSearch = await Property.findAll({
+      where: {
+        [Op.or]: [
+          {
+            tipe: {
+              [Op.iLike]: `%${query}%`,
+            },
+          },
+          {
+            location: {
+              [Op.iLike]: `%${query}%`,
+            },
+          },
+        ],
+      },
+    });
 
-module.exports = { getProperty, getProperties, filterProperties };
+    res.status(200).json(propertiesSearch);
+  } catch (error) {
+    res.status(500).json({ message: "Error searching for property" });
+  }
+};
+
+const searchPrice = async (req, res) => {
+  try {
+    const { minPrice, maxPrice } = req.params;
+
+    const propertiesSearch = await Property.findAll({
+      where: {
+        price: {
+          [Op.between]: [minPrice, maxPrice],
+        },
+      },
+    });
+
+    res.status(200).json(propertiesSearch);
+  } catch (error) {
+    res.status(500).json({ message: "Error searching for property" });
+  }
+};
+
+module.exports = {
+  getProperty,
+  getProperties,
+  filterProperties,
+  search,
+  searchPrice,
+};
